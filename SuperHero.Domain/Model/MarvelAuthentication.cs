@@ -6,10 +6,10 @@ namespace SuperHero.Domain.Model
 {
     public class MarvelAuthentication
     {
-        public long TimeStamp { get; }
+        public long TimeStamp { get; set; }
 
-        public string ApiKey { get; }
+        public string ApiKey { get; set; }
 
-        public string HashMD5 { get; }
+        public string HashMD5 { get; set; }
     }
 }

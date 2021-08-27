@@ -1,8 +1,61 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model CharactersViewModel
+@{
+    ViewData["Title"] = "Consulta de Personagens";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<script src="~/js/jquery-3.5.1.min.js" type="text/javascript"></script>
+
+<style>
+    .form-col {
+        float: left;
+        padding: 6px;
+    }
+
+    .form-col-3 {
+        width: 25%;
+    }
+</style>
+
+<script type="text/javascript">
+
+    function CallLoadImageSuperHero(id) {
+        $.get('@Url.Action("LoadImageSuperHero", "Home")', { id: id }, function (response) {
+            if (response.success) {
+                alert(response.data);
+            }
+        });
+    }
+
+
+    $(function () {
+        $('#ddlSuperHero').change(function () {
+             CallLoadImageSuperHero($(this).val());
+        });
+    });
+
+</script>
+
+<div>
+    <div style="margin-top:40px">
+        <div class="form-col form-col-3">
+            <label>Super Herói</label>
+            @Html.DropDownList("ddlSuperHero", Model.NameSuperHero, "Selecione...")
+        </div>
+    </div>
+
+    <div style="background-color:aqua; width:600px; height:400px; float:right;">
+        <div style="background-color:azure; width:270px; height:360px; margin:20px 20px 20px 20px;">
+
+        </div>
+        @*<div style="background-color:azure; width:250px; height:260px; float:right;">
+
+        </div>*@
+    </div>
+
+    <div>
+        <div class="form-col form-col-3">
+            <label>História</label>
+            @Html.DropDownList("ddlStorie", Model.NameSuperHero, "Selecione...")
+        </div>
+    </div>
 </div>
