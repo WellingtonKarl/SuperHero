@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuperHero.Domain.DTOs
+namespace SuperHero.Domain.DTOs.Character
 {
     public class CharacterDto
     {

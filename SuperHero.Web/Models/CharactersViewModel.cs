@@ -16,5 +16,6 @@ namespace SuperHero.Web.Models
         public string Descrition { get; set; }
 
         public IEnumerable<SelectListItem> NameSuperHero { get; set; }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using SuperHero.Domain.DTOs;
+﻿
+using SuperHero.Domain.DTOs.Character;
+using SuperHero.Domain.DTOs.Storie;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,5 +11,7 @@ namespace SuperHero.Domain.Interfaces
     public interface IMarvelService
     {
         Task<CharacterDto> GetAllCharacters();
+
+        Task<CharacterDto> GetCharacter(int id);
     }
 }

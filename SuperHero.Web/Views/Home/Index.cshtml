@@ -7,55 +7,65 @@
 
 <style>
     .form-col {
-        float: left;
+        width: 300px;
         padding: 6px;
-    }
-
-    .form-col-3 {
-        width: 25%;
     }
 </style>
 
 <script type="text/javascript">
 
     function CallLoadImageSuperHero(id) {
-        $.get('@Url.Action("LoadImageSuperHero", "Home")', { id: id }, function (response) {
-            if (response.success) {
-                alert(response.data);
-            }
+        $.get('@Url.Action("LoadInformationsSuperHero", "Home")', { id: id }, function (response) {
+            $('#comboStorie').html(response.combo);
+            $('#imageHero').html(response.image);
+            $('#description').html(response.description);
         });
     }
 
 
     $(function () {
         $('#ddlSuperHero').change(function () {
-             CallLoadImageSuperHero($(this).val());
+            if ($(this).val() != "")
+                CallLoadImageSuperHero($(this).val());
         });
     });
 
+    function Limpar() {
+
+        $('#comboStorie').empty();
+        $('#imageHero').html("");
+        $('#description').html("");
+    }
+
 </script>
 
+<div style="margin-top:40px">
+    <div class="form-col">
+        <label>Super Herói</label>
+        @Html.DropDownList("ddlSuperHero", Model.NameSuperHero, "Selecione...")
+    </div>
+</div>
+
+<div style="background-color:aqua; width:604px; height:404px; box-shadow: 0 0 1em black; margin:-60px 0 0 490px;  border-radius:5px 5px; border:1px solid black; position:absolute">
+    <div id="description" style="background-color: azure; width: 270px; border-radius: 5px 5px; height: 360px; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; position:absolute; right:0;">
+
+    </div>
+    <div id="imageHero" style="background-color: red; width: 270px; height: 360px; border-radius: 5px 5px; margin: 20px 20px 20px 20px;">
+
+    </div>
+
+</div>
+
 <div>
-    <div style="margin-top:40px">
-        <div class="form-col form-col-3">
-            <label>Super Herói</label>
-            @Html.DropDownList("ddlSuperHero", Model.NameSuperHero, "Selecione...")
-        </div>
+    <div id="comboStorie" class="form-col">
+
     </div>
+</div>
 
-    <div style="background-color:aqua; width:600px; height:400px; float:right;">
-        <div style="background-color:azure; width:270px; height:360px; margin:20px 20px 20px 20px;">
+<div class="form-col">
+    <button class="btn-outline-secondary" onclick="Limpar()">Limpar Consulta</button>
+</div>
 
-        </div>
-        @*<div style="background-color:azure; width:250px; height:260px; float:right;">
+<div>
 
-        </div>*@
-    </div>
-
-    <div>
-        <div class="form-col form-col-3">
-            <label>História</label>
-            @Html.DropDownList("ddlStorie", Model.NameSuperHero, "Selecione...")
-        </div>
-    </div>
 </div>
