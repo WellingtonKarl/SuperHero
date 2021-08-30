@@ -52,9 +52,9 @@ namespace SuperHero.Web.Controllers
         {
             var character = await _imarvelService.GetCharacter(id);
 
-            var storiesItens = character.data.results.Select(r => r.stories).Select(s => s.items).FirstOrDefault();
+            var comicItens = character.data.results.Select(r => r.comics).Select(s => s.items).FirstOrDefault();
 
-            var listitem = storiesItens.Select(i => new SelectListItem
+            var listitem = comicItens.Select(i => new SelectListItem
             {
                 Value = i.resourceURI,
                 Text = i.name
@@ -65,7 +65,7 @@ namespace SuperHero.Web.Controllers
             ViewBag.FrontCover = string.Concat(thumbnail.path, "/", _proporcion, thumbnail.extension);
             ViewBag.Description = character.data.results.Select(r => r.description).FirstOrDefault();
 
-            var partialCombo = await ConverterHelper.RenderViewAsync(this, "Compenents/_ComboStories", listitem, true);
+            var partialCombo = await ConverterHelper.RenderViewAsync(this, "Compenents/_ComboComicsComponent", listitem, true);
             var partialImage = await ConverterHelper.RenderViewAsync(this, "Compenents/_ImageCharacters", ViewBag.FrontCover, true);
             var partialDescription = await ConverterHelper.RenderViewAsync(this, "Compenents/_DescriptionComponent", ViewBag.Description, true);
 
@@ -78,6 +78,18 @@ namespace SuperHero.Web.Controllers
                 });
         }
 
-        
+        public async Task<IActionResult> LoadInformationsHQs(string url)
+        {
+            var comics = await _imarvelService.GetComicCharacter(url);
+
+            var thumbnail = comics.data.results.Select(r => r.thumbnail).FirstOrDefault();
+
+            var path = string.Concat(thumbnail.path, "/", _proporcion, thumbnail.extension);
+            ViewBag.Description = comics.data.results.Select(r => r.description).FirstOrDefault();
+
+            var patialImageComics = await ConverterHelper.RenderViewAsync(this, "Compenents/_ImageComic", path, true);
+
+            return Json(new { imageComic = patialImageComics, description = ViewBag.Description });
+        }
     }
 }

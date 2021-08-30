@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SuperHero.Domain.DTOs.Character;
+using SuperHero.Domain.DTOs.Comic;
 using SuperHero.Domain.DTOs.Storie;
 using SuperHero.Domain.Interfaces;
 using SuperHero.Domain.Model;
@@ -23,7 +24,7 @@ namespace SuperHero.Service.Services
 
         public async Task<CharacterDto> GetAllCharacters()
         {
-            var url = $"http://gateway.marvel.com/v1/public/characters{Authentication}";
+            var url = $"http://gateway.marvel.com/v1/public/characters{Authentication}&limit=100";
 
             using var clientMarvel = new HttpClient();
             var result = await clientMarvel.GetAsync(url);
@@ -45,6 +46,19 @@ namespace SuperHero.Service.Services
             var character = JsonConvert.DeserializeObject<CharacterDto>(content);
 
             return character;
+        }
+
+        public async Task<ComicDto> GetComicCharacter(string url)
+        {
+            var urlUnion = $"{url}{Authentication}";
+
+            using var clientMarvel = new HttpClient();
+            var result = await clientMarvel.GetAsync(urlUnion);
+            var content = await result.Content.ReadAsStringAsync();
+
+            var comics = JsonConvert.DeserializeObject<ComicDto>(content);
+
+            return comics;
         }
     }
 }

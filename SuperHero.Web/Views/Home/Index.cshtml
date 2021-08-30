@@ -14,58 +14,69 @@
 
 <script type="text/javascript">
 
-    function CallLoadImageSuperHero(id) {
+    function CallLoadInformationSuperHero(id) {
         $.get('@Url.Action("LoadInformationsSuperHero", "Home")', { id: id }, function (response) {
-            $('#comboStorie').html(response.combo);
+            
+            $('#comboComics').html(response.combo);
             $('#imageHero').html(response.image);
             $('#description').html(response.description);
         });
     }
 
-
     $(function () {
         $('#ddlSuperHero').change(function () {
             if ($(this).val() != "")
-                CallLoadImageSuperHero($(this).val());
+                CallLoadInformationSuperHero($(this).val());
+
+            if ($('#imageComic').html() != "" || $('#descriptionComic').html() != "") {
+                $('#imageComic').html("");
+                $('#descriptionComic').html("");
+            }
         });
     });
 
     function Limpar() {
 
-        $('#comboStorie').empty();
+        $('#ddlSuperHero').val("");
+        $('#comboComics').empty();
         $('#imageHero').html("");
         $('#description').html("");
+        $('#imageComic').html("");
+        $('#descriptionComic').html("");
     }
-
 </script>
 
-<div style="margin-top:40px">
-    <div class="form-col">
-        <label>Super Herói</label>
-        @Html.DropDownList("ddlSuperHero", Model.NameSuperHero, "Selecione...")
+<div style="display:flex; flex-wrap:wrap; justify-content:space-between;">
+    <div style="margin-top:40px">
+        <div class="form-col">
+            <label>Super Herói</label>
+            @Html.DropDownList("ddlSuperHero", Model.NameSuperHero, "Selecione...")
+        </div>
+        <div id="comboComics" class="form-col">
+
+        </div>
+        <div class="form-col">
+            <button class="btn-outline-secondary" onclick="Limpar()">Limpar Consulta</button>
+        </div>
+    </div>
+
+    <div id="divHero" style="background-color:lightgray; width: 504px; height: 364px; box-shadow: 0 0 1em black; margin: -150px 0 0 560px; border-radius: 5px 5px; border: 1px solid black;">
+        <div id="imageHero" style=" width: 220px; height: 320px; box-shadow: 0 0 1em black; border-radius: 5px 5px; margin: 20px 20px 20px 20px; position: absolute;">
+
+        </div>
+        <div id="description" style=" overflow: auto; width: 220px; border-radius: 5px 5px; height: 320px; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; position: relative; float: right;">
+
+        </div>
+
+    </div>
+    <div style="background-color: lightgray; width: 1200px; height: 400px; box-shadow: 0 0 1em black; border-radius: 5px 5px; margin-top: 20px; border: 1px solid black;">
+        <div id="imageComic" style=" box-shadow: 0 0 1em black; margin: 20px 20px 20px 20px; height: 356px; width: 300px; border-radius: 5px 5px; position: absolute;">
+            
+        </div>
+        <div id="descriptionComic" style=" overflow: auto; font-size: larger; font-style: italic; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; height: 356px; width: 750px; border-radius: 5px 5px; position: relative; float: right;">
+            <p>@ViewBag.Description</p>
+        </div>
     </div>
 </div>
 
-<div style="background-color:aqua; width:604px; height:404px; box-shadow: 0 0 1em black; margin:-60px 0 0 490px;  border-radius:5px 5px; border:1px solid black; position:absolute">
-    <div id="description" style="background-color: azure; width: 270px; border-radius: 5px 5px; height: 360px; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; position:absolute; right:0;">
 
-    </div>
-    <div id="imageHero" style="background-color: red; width: 270px; height: 360px; border-radius: 5px 5px; margin: 20px 20px 20px 20px;">
-
-    </div>
-
-</div>
-
-<div>
-    <div id="comboStorie" class="form-col">
-
-    </div>
-</div>
-
-<div class="form-col">
-    <button class="btn-outline-secondary" onclick="Limpar()">Limpar Consulta</button>
-</div>
-
-<div>
-
-</div>

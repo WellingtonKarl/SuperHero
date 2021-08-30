@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SelectListItem>
+
+<script type="text/javascript">
+    function CallLoadInformationComics(url) {
+        $.get('@Url.Action("LoadInformationsHQs", "Home")', { url: url }, function (response) {
+            $('#descriptionComic').html(response.description);
+            $('#imageComic').html(response.imageComic);
+        });
+    }
+
+
+    $(function () {
+        $('#ddlComics').change(function () {
+            if ($(this).val() != "")
+                CallLoadInformationComics($(this).val());
+        });
+    });
+</script>
+
+<label>História</label>
+@Html.DropDownList("ddlComics", Model, "Selecione....")

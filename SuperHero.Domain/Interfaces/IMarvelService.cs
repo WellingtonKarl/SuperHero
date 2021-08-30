@@ -1,5 +1,6 @@
 ﻿
 using SuperHero.Domain.DTOs.Character;
+using SuperHero.Domain.DTOs.Comic;
 using SuperHero.Domain.DTOs.Storie;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace SuperHero.Domain.Interfaces
         Task<CharacterDto> GetAllCharacters();
 
         Task<CharacterDto> GetCharacter(int id);
+
+        Task<ComicDto> GetComicCharacter(string url);
     }
 }
