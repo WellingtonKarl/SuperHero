@@ -4,7 +4,11 @@
 
 <h3>🛠 Tecnologias</h3>
 <ul>
-    <li>.Net Core 3.1</li>
+    <li>Criado em .Net Core 3.1 <b>Migrado para .Net 5.0</b></li>
     <li>FrameWork de Conversão: <b>Newtonsoft</b></li>
     <li>FrameWork para consumo da API: <b>System.Net.Http</b></li>
+    <li>Plataforma para Implantação: <b>Heroku</b></li>
 </ul>
+
+<h3>Projeto implantado</h3>
+<a href="https://consultasuperheromarvel.herokuapp.com/" title="SuperHero.Web">https://consultasuperheromarvel.herokuapp.com/</a>
