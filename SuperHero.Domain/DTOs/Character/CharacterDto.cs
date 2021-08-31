@@ -6,12 +6,12 @@ namespace SuperHero.Domain.DTOs.Character
 {
     public class CharacterDto
     {
-        public string code { get; set; }
-        public string status { get; set; }
-        public string copyright { get; set; }
-        public string attributionText { get; set; }
-        public string attributionHTML { get; set; }
-        public Data data { get; set; }
+        public string Code { get; set; }
+        public string Status { get; set; }
+        public string Copyright { get; set; }
+        public string AttributionText { get; set; }
+        public string AttributionHTML { get; set; }
+        public Data Data { get; set; }
         public string etag { get; set; }
     }
 

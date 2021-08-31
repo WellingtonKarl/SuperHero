@@ -1,10 +1,6 @@
 ﻿
 using SuperHero.Domain.DTOs.Character;
 using SuperHero.Domain.DTOs.Comic;
-using SuperHero.Domain.DTOs.Storie;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SuperHero.Domain.Interfaces

@@ -10,6 +10,68 @@
         width: 300px;
         padding: 6px;
     }
+
+    #divHero {
+        background-color: lightgray;
+        width: 504px;
+        height: 364px;
+        box-shadow: 0 0 1em black;
+        margin: -150px 0 0 560px;
+        border-radius: 5px 5px;
+        border: 1px solid black;
+    }
+
+    #imageHero {
+        width: 220px;
+        height: 320px;
+        box-shadow: 0 0 1em black;
+        border-radius: 5px 5px;
+        margin: 20px 20px 20px 20px;
+        position: absolute;
+    }
+
+    #description {
+        overflow: auto;
+        width: 220px;
+        border-radius: 5px 5px;
+        height: 320px;
+        margin: 20px 20px 20px 20px;
+        padding: 5px 5px 5px 5px;
+        position: relative;
+        float: right;
+    }
+
+    #divComic {
+        background-color: lightgray;
+        width: 1200px;
+        height: 400px;
+        box-shadow: 0 0 1em black;
+        border-radius: 5px 5px;
+        margin-top: 20px;
+        border: 1px solid black;
+    }
+
+    #imageComic {
+        box-shadow: 0 0 1em black;
+        margin: 20px 20px 20px 20px;
+        height: 356px;
+        width: 300px;
+        border-radius: 5px 5px;
+        position: absolute;
+    }
+
+    #descriptionComic {
+        overflow: auto;
+        font-size: larger;
+        font-style: italic;
+        margin: 20px 20px 20px 20px;
+        padding: 5px 5px 5px 5px;
+        height: 356px;
+        width: 750px;
+        border-radius: 5px 5px;
+        position: relative;
+        float: right;
+    }
 </style>
 
 <script type="text/javascript">
@@ -60,20 +122,20 @@
         </div>
     </div>
 
-    <div id="divHero" style="background-color:lightgray; width: 504px; height: 364px; box-shadow: 0 0 1em black; margin: -150px 0 0 560px; border-radius: 5px 5px; border: 1px solid black;">
-        <div id="imageHero" style=" width: 220px; height: 320px; box-shadow: 0 0 1em black; border-radius: 5px 5px; margin: 20px 20px 20px 20px; position: absolute;">
+    <div id="divHero">
+        <div id="imageHero">
 
         </div>
-        <div id="description" style=" overflow: auto; width: 220px; border-radius: 5px 5px; height: 320px; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; position: relative; float: right;">
-
+        <div id="description">
+            <p>@ViewBag.DescriptionHero</p>
         </div>
 
     </div>
-    <div style="background-color: lightgray; width: 1200px; height: 400px; box-shadow: 0 0 1em black; border-radius: 5px 5px; margin-top: 20px; border: 1px solid black;">
-        <div id="imageComic" style=" box-shadow: 0 0 1em black; margin: 20px 20px 20px 20px; height: 356px; width: 300px; border-radius: 5px 5px; position: absolute;">
+    <div id="divComic">
+        <div id="imageComic">
             
         </div>
-        <div id="descriptionComic" style=" overflow: auto; font-size: larger; font-style: italic; margin: 20px 20px 20px 20px; padding: 5px 5px 5px 5px; height: 356px; width: 750px; border-radius: 5px 5px; position: relative; float: right;">
+        <div id="descriptionComic">
             <p>@ViewBag.Description</p>
         </div>
     </div>
